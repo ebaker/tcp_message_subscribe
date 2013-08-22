@@ -1,0 +1,38 @@
+* tcp_message_subscribe
+
+
+*** Overview
+Evaluate available python TCP socketservers for app1 -> router -> app2
+communication. SocketServer and asyncore were both explored for such
+system. Ultimately this was more for learning and entertainment than
+for use in a production environment. While I fully support rolling
+your own protocol/infrastructure when it is adventageous, the level of
+difficulty in debugging cross platform socket communication was far
+higher than expected. Moving forward a well established messaging
+protocol (zeromq, activemq, XMPP) far outweigh rolling my own in this
+situation.
+
+*** Topology
+With an asynchronous TCP server running, a client connects and sends a
+JSON-RPC-like string to register.
+#+begin_src sh
+{"action": "register", "applicationClass": "className"}
+#+end_src
+The TCP server stores a mapping of "applicationClass" -> connected
+socket. A message can then be sent from registered application class
+to another registered application class.
+#+begin_src sh
+{"action": "message",
+ "targetClass": target_class,
+ "senderClass": sender_class,
+ "messageBody": message_body}
+#+end_src
+From here the client just prints the message once recieved as this was
+merely proof of concept and a fun way to delve into the asynchronous
+socket handlers available out of the box in python.
+
+*** TODO
+- Abstract away logic from core_tcp_client.py and core_tcp_client2.py
+  to create single core_tcp_client interface.
+- Fix JSON decoding issue in core_tcp_client.
+- Delete repo and implement zeromq for actual use somewhere.
