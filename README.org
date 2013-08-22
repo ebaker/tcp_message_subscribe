@@ -6,9 +6,8 @@ Evaluate available python TCP socketservers for app1 -> router -> app2
 communication. SocketServer and asyncore were both explored for such
 system. Ultimately this was more for learning and entertainment than
 for use in a production environment. While I fully support rolling
-your own protocol/infrastructure when it is adventageous, the level of
-difficulty in debugging cross platform socket communication was far
-higher than expected. Moving forward a well established messaging
+your own protocol/infrastructure when it is advantageous, the level of
+difficulty in debugging cross platform socket communication was very high. Moving forward a well established messaging
 protocol (zeromq, activemq, XMPP) far outweigh rolling my own in this
 situation.
 
