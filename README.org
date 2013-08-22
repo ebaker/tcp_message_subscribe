@@ -30,7 +30,7 @@ From here the client just prints the message once recieved as this was
 merely proof of concept and a fun way to delve into the asynchronous
 socket handlers available out of the box in python.
 
-*** Remaining Actionable Items
+*** Remaining Tasks
 - Abstract away logic from core_tcp_client.py and core_tcp_client2.py
   to create single core_tcp_client interface.
 - Fix JSON decoding issue in core_tcp_client.
